@@ -1,5 +1,7 @@
 package com.example.callingapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -18,11 +20,16 @@ import com.example.callingapp.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+
+    private EditText phoneNumber;
+    private ImageButton callButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        //This is specifically for the phone part
+        phoneNumber = findViewById(R.id.phoneNumber);
+        callButton = findViewById(R.id.callButton);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                String phone = phoneNumber.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("Tel: " + phone));
+                startActivity(intent);
+            }
+        });
 
         setSupportActionBar(binding.toolbar);
 
