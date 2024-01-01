@@ -37,16 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
         //This is specifically for the phone part
         phoneNumber = findViewById(R.id.phoneNumber);
-        callButton = findViewById(R.id.callButton);
-        callButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String phone = phoneNumber.getText().toString();
-                Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("Tel: " + phone));
-                startActivity(intent);
-            }
-        });
+        //callButton = findViewById(R.id.callButton);
+        //callButton.setOnClickListener(new View.OnClickListener() {
+            //@Override
+           // public void onClick(View v) {
+                //String phone = phoneNumber.getText().toString();
+               // Intent intent = new Intent(Intent.ACTION_CALL);
+               // intent.setData(Uri.parse("Tel: " + phone));
+              //  startActivity(intent);
+           // }
+       // });
     }
 
     private void setupFAB()
@@ -61,16 +61,10 @@ public class MainActivity extends AppCompatActivity {
     {
         //This is specifically for the phone part
         phoneNumber = findViewById(R.id.phoneNumber);
-        callButton = findViewById(R.id.callButton);
-        callButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String phone = phoneNumber.getText().toString();
-                Intent intent = new Intent(Intent.ACTION_CALL);
-                intent.setData(Uri.parse("Tel: " + phone));
-                startActivity(intent);
-            }
-        });
+        String phone = phoneNumber.getText().toString();
+        Intent intent = new Intent(Intent.ACTION_CALL);
+        intent.setData(Uri.parse("Tel: " + phone));
+        startActivity(intent);
     }
         @Override
         public boolean onCreateOptionsMenu (Menu menu) {

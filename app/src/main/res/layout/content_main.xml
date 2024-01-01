@@ -12,10 +12,10 @@
         android:layout_gravity="bottom|end"
         android:layout_marginLeft="148dp"
         android:layout_marginTop="404dp"
-        android:text="Hello"
+        android:text="Call"
+        app:icon="@drawable/baseline_phone_24"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/phoneNumber"
@@ -26,12 +26,13 @@
         android:layout_marginRight="16dp"
         android:hint="(123)456-7890"
         android:inputType="phone"
-        app:layout_constraintBottom_toTopOf="@id/callButton"
+        app:layout_constraintBottom_toTopOf="@id/fab"
         app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--
     <ImageButton
         android:id="@+id/callButton"
         android:layout_width="98dp"
@@ -44,6 +45,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneNumber"
         app:layout_constraintVertical_bias="0.541" />
+        -->
 
     <!--  <com.google.android.material.appbar.MaterialToolbar
            android:id="@+id/toolbar"
