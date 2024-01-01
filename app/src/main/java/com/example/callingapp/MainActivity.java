@@ -11,6 +11,7 @@ import android.view.View;
 
 
 import com.example.callingapp.databinding.ActivityMainBinding;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,7 +32,33 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        setupFAB();
 
+
+        //This is specifically for the phone part
+        phoneNumber = findViewById(R.id.phoneNumber);
+        callButton = findViewById(R.id.callButton);
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = phoneNumber.getText().toString();
+                Intent intent = new Intent(Intent.ACTION_CALL);
+                intent.setData(Uri.parse("Tel: " + phone));
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setupFAB()
+    {
+        ExtendedFloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(v -> handleFABClick());
+    }
+
+
+    //same thing as the ImageButton but swapped it for the FAB instead
+    private void handleFABClick()
+    {
         //This is specifically for the phone part
         phoneNumber = findViewById(R.id.phoneNumber);
         callButton = findViewById(R.id.callButton);
