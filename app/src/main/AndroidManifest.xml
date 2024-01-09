@@ -5,7 +5,8 @@
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+   <!-- <uses-permission android:name="android.permission.CALL_PHONE"/> -->
+    <!--<uses-permission android:name="android.permission.MANAGE_OWN_CALLS"/ -->
 
     <application
         android:allowBackup="true"
@@ -28,6 +29,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".CallingActivity"
+            android:exported="false"
+            android:theme="@style/Theme.CallingApp" >
+        </activity>
+
     </application>
 
 </manifest>

@@ -5,4 +5,10 @@
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="cancel">No</string>
+    <string name="start">Yes</string>
+    <string name="dialog_start_game">Do you want to call this number?</string>
+    <string name="null_phone_num_message">Please enter a phone number first</string>
+    <string name="yes_dialog">Yes</string>
+    <string name="no_dialog">No</string>
 </resources>

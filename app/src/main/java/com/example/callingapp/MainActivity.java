@@ -6,17 +6,22 @@ import android.os.Bundle;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.View;
 
 
 import com.example.callingapp.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,35 +29,30 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     private EditText phoneNumber;
-    private ImageButton callButton;
+
+    FragmentManager supportFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setupFAB();
-
-
-        //This is specifically for the phone part
         phoneNumber = findViewById(R.id.phoneNumber);
-        //callButton = findViewById(R.id.callButton);
-        //callButton.setOnClickListener(new View.OnClickListener() {
-            //@Override
-           // public void onClick(View v) {
-                //String phone = phoneNumber.getText().toString();
-               // Intent intent = new Intent(Intent.ACTION_CALL);
-               // intent.setData(Uri.parse("Tel: " + phone));
-              //  startActivity(intent);
-           // }
-       // });
-    }
-
-    private void setupFAB()
-    {
         ExtendedFloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(v -> handleFABClick());
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+             //   generateDialog.show(supportFragmentManager, "GAME_DIALOG");
+                if (phoneNumber.length() == 0) {
+                    Snackbar.make(view, R.string.null_phone_num_message, Snackbar.LENGTH_SHORT).show();
+                }
+                else {
+
+                    Utils.showInfoDialog(MainActivity.this, "Do you want to call this number?", phoneNumber.getText().toString(), phoneNumber);
+                    System.out.println("hello");
+                }
+            }
+        });
     }
 
 
