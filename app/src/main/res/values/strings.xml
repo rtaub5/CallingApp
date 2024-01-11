@@ -11,4 +11,6 @@
     <string name="null_phone_num_message">Please enter a phone number first</string>
     <string name="yes_dialog">Yes</string>
     <string name="no_dialog">No</string>
+
+    <string name="textView_text">Text to display</string>
 </resources>

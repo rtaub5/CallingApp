@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -57,22 +56,18 @@ public class Utils {
         alertDialogBuilder.setNegativeButton (no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 String callStr = phoneNumber.getText().toString();
-                showCallingActivity(context, callStr);
-               // TextView outputText = ((Activity) context).findViewById(R.id.calling_textview);
-              //  outputText.setText("Hello");
+                showCallingActivity(context);
+                TextView outputText = ((Activity) context).findViewById(R.id.calling_textview);
+                outputText.setText("Hello");
 
             }
         });
         alertDialogBuilder.show();
     }
 
-    private static void showCallingActivity(Context context, String callStr) {
-       // Intent intent = new Intent(context.getApplicationContext(), CallingActivity.class);
-       // context.startActivity(intent);
-        Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + callStr));  // replace just the "321..." with your TextView's text...
+    private static void showCallingActivity(Context context) {
+        Intent intent = new Intent(context.getApplicationContext(), CallingActivity.class);
         context.startActivity(intent);
-
     }
 
 
