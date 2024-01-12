@@ -13,4 +13,6 @@
     <string name="no_dialog">No</string>
 
     <string name="textView_text">Text to display</string>
+    <string name="phone_hint">(123)456-7890</string>
+    <string name="fab_string">Call</string>
 </resources>

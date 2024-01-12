@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText phoneNumber;
 
-    FragmentManager supportFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             //   generateDialog.show(supportFragmentManager, "GAME_DIALOG");
                 if (phoneNumber.length() == 0) {
                     Snackbar.make(view, R.string.null_phone_num_message, Snackbar.LENGTH_SHORT).show();
                 }
@@ -55,17 +53,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    //same thing as the ImageButton but swapped it for the FAB instead
-    private void handleFABClick()
-    {
-        //This is specifically for the phone part
-        phoneNumber = findViewById(R.id.phoneNumber);
-        String phone = phoneNumber.getText().toString();
-        Intent intent = new Intent(Intent.ACTION_CALL);
-        intent.setData(Uri.parse("Tel: " + phone));
-        startActivity(intent);
-    }
         @Override
         public boolean onCreateOptionsMenu (Menu menu) {
             // Inflate the menu; this adds items to the action bar if it is present.

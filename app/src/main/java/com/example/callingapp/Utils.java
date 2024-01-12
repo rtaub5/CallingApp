@@ -58,8 +58,6 @@ public class Utils {
             public void onClick(DialogInterface dialog, int id) {
                 String callStr = phoneNumber.getText().toString();
                 showCallingActivity(context, callStr);
-             //   TextView outputText = ((Activity) context).findViewById(R.id.calling_textview);
-               // outputText.setText("Hello");
 
             }
         });
@@ -68,7 +66,7 @@ public class Utils {
 
     private static void showCallingActivity(Context context, String callStr) {
         Intent intent = new Intent(Intent.ACTION_DIAL);
-        intent.setData(Uri.parse("tel:" + callStr));  // replace just the "321..." with your TextView's text...
+        intent.setData(Uri.parse("tel:" + callStr));
         context.startActivity(intent);
     }
 

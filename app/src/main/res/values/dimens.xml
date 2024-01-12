@@ -1,4 +1,7 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="land_margin">64dp</dimen>
+    <dimen name="phone_margin_height">130dp</dimen>
+    <dimen name="phone_margin_width">16dp</dimen>
+    <dimen name="calling_padding">10dp</dimen>
 </resources>

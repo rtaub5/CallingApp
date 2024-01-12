@@ -22,36 +22,4 @@
 
     <include layout="@layout/content_main" />
 
-
-
-   <!-- <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/phoneNumber"
-        android:hint="(123)456-7890"
-        android:inputType="phone"
-        android:layout_margin="16dp"
-        />
-        -->
-
-    <!--<ImageButton
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/callButton"
-        android:src="@drawable/baseline_phone_24"
-        android:background="@color/black"
-        />
-        -->
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
