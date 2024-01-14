@@ -1,0 +1,21 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/display_header">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/night_mode_key"
+            app:summaryOff="@string/night_mode_off"
+            app:summaryOn="@string/night_mode_on"
+            app:title="@string/night_mode_title" />
+    </PreferenceCategory>
+    <PreferenceCategory app:title="Call Confirmation">
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:key="@string/confirm_call_key"
+            app:summaryOff="Use dialog to confirm calls"
+            app:summaryOn="Do not confirm calls"
+            app:title="Confirm Calls/Do not confirm" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
