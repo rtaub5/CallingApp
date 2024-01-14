@@ -1,10 +1,14 @@
 package com.example.callingapp;
 
+import static android.preference.PreferenceManager.getDefaultSharedPreferences;
+
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -23,20 +27,43 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
+    private ArrayList<Integer> mNumberHistory;
+
+    private final String mKey = "key";
 
     private ActivityMainBinding binding;
 
     private EditText phoneNumber;
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+        saveOrDeleteInSharedPrefs();
+    }
+
+    private void saveOrDeleteInSharedPrefs(){
+        SharedPreferences defaultSharedPreferences = getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = defaultSharedPreferences.edit();
+        String num = phoneNumber.toString();
+        editor.putString(mKey, num);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         phoneNumber = findViewById(R.id.phoneNumber);
+
+        //if we are having a list of numbers dialed
+        initializeHistoryList(savedInstanceState, mKey);
+
         ExtendedFloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +78,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void initializeHistoryList(Bundle savedInstanceState, String key){
+        if(savedInstanceState != null){
+            mNumberHistory = savedInstanceState.getIntegerArrayList(key);
+        }
+        else{
+            String history = getDefaultSharedPreferences(this).getString(key, null);
+            mNumberHistory = history == null ? new ArrayList<>(): Utils.getNumberListFromJSONString(history);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putIntegerArrayList(mKey, mNumberHistory);
     }
 
         @Override
