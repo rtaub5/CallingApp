@@ -11,6 +11,12 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+
 public class ConfirmCallDialog {
     /**
      * Shows an Android (nicer) equivalent to JOptionPane
@@ -61,7 +67,7 @@ public class ConfirmCallDialog {
     }
 
     public static ArrayList<Integer> getNumberListFromJSONString (String gson){
-        Type ArrayListIntegerType = new TypeToken<ArrayList<Integer>> (){}.getType();
+        Type ArrayListIntegerType = new TypeToken<ArrayList<Integer>>(){}.getType();
         return new Gson().fromJson(gson, ArrayListIntegerType);
     }
 
