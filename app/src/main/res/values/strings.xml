@@ -17,7 +17,7 @@
     <string name="fab_string">Call</string>  <string name="show_history">Show History</string>
     <string name="clear_history">Clear History</string>
     <string name="about">About</string>
-    <string name="about_text">Aliza Weitzbergs, Ilana Lessers, and Rocki Taubs  Final Project: MCOO 255, Fall 2023, Calling App</string>
+    <string name="about_text">Aliza Weitzberg\'s, Ilana Lesser\'s, and Rocki Taub\'s  Final Project:\nMCOO 255, Fall 2023, Calling App</string>
     <string name="night_mode_key">Night Mode</string>
 <string name="night_mode_title">Dark/Night Mode</string>
 <string name="night_mode_off">Never use Night/Dark Mode</string>
@@ -25,6 +25,7 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="display_header">Display</string>
     <string name="confirm_call_key">Confirm</string>
+    <string name="about_title">About this app: </string>
     <string name="background_image">Background Image</string>
 
 

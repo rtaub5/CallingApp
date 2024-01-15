@@ -12,6 +12,7 @@ import android.os.Bundle;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -120,9 +121,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if (id == R.id.about) {
             View view = findViewById(R.id.main_activity);
-
-            Snackbar mSnackbar = Snackbar.make(view, R.string.about_text, Snackbar.LENGTH_SHORT);
-            mSnackbar.show();
+            Utils.showInfoDialog(this, view.getResources().getText(R.string.about_title).toString(), view.getResources().getText(R.string.about_text).toString());
             return true;
         }
 
