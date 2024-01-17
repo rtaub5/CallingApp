@@ -20,6 +20,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
+import com.example.callingapp.model.PhoneNumber;
 import com.example.callingapp.model.lib.Utils;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -80,9 +81,10 @@ public class SettingsActivity extends AppCompatActivity {
             }
         }
 
-        private void setConfirmCallOnOrOff(Boolean newBooleanValue) {
-            System.out.println("do nothing");
-        }
+
+       private void setConfirmCallOnOrOff(Boolean newBooleanValue) {
+           System.out.println("Do nothing");
+       }
 
         private void setNightModePreferenceListener() {
             Preference nightModePreference = findPreference(getString(R.string.night_mode_key));
@@ -108,6 +110,7 @@ public class SettingsActivity extends AppCompatActivity {
             SharedPreferences defaultSharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
             return defaultSharedPreferences.getBoolean(keyNightMode, true);
         }
+
 
 
     }

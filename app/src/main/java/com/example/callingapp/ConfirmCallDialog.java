@@ -60,7 +60,7 @@ public class ConfirmCallDialog {
         alertDialogBuilder.show();
     }
 
-    private static void showCallingActivity(Context context, String callStr) {
+    public static void showCallingActivity(Context context, String callStr) {
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData(Uri.parse("tel:" + callStr));
         context.startActivity(intent);
@@ -74,7 +74,5 @@ public class ConfirmCallDialog {
     public static String getJSONStringFromNumberList (ArrayList<Integer> numberList){
         return new Gson().toJson(numberList);
     }
-
-
 
 }

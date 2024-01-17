@@ -17,5 +17,4 @@
             app:title="Confirm Calls/Do not confirm" />
     </PreferenceCategory>
 
-
 </PreferenceScreen>

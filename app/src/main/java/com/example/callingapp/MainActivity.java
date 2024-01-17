@@ -20,6 +20,7 @@ import android.view.View;
 
 
 import com.example.callingapp.databinding.ActivityMainBinding;
+import com.example.callingapp.model.ConfirmCall;
 import com.example.callingapp.model.PhoneNumber;
 import com.example.callingapp.model.lib.Utils;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -38,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private ActivityMainBinding binding;
-    private PhoneNumber mPhoneNumber;
     private ArrayList<Integer> mNumberHistory;
     private final String mKey = "key";
+    private ConfirmCall confirmCall;
 
     private EditText phoneNumber;
+
 
     @Override
     protected void onStop() {
@@ -55,8 +57,10 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = defaultSharedPreferences.edit();
         String num = phoneNumber.toString();
         editor.putString(mKey, num);
-
+     //   editor.putBoolean(bKey, isConfirmCallOn);
     }
+
+
 
 
     @Override
@@ -74,10 +78,17 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+           //  confirmCall.setCallConfirmationEnabled(SettingsActivity.SettingsFragment.setConfirmCallModeListener());
                 if (phoneNumber.length() == 0) {
                     Snackbar.make(view, R.string.null_phone_num_message, Snackbar.LENGTH_SHORT).show();
                 } else {
-                    ConfirmCallDialog.showInfoDialog(MainActivity.this, "Do you want to call this number?", phoneNumber.getText().toString(), phoneNumber);
+               //    confirmCall.setPhoneNumber(phoneNumber.getText().toString());
+                   // if (confirmCall.getCallConfirmationEnabled()) {
+                        ConfirmCallDialog.showInfoDialog(MainActivity.this, "Do you want to call this number?", phoneNumber.getText().toString(), phoneNumber);
+                   // }
+                  //  else {
+                  //      ConfirmCallDialog.showCallingActivity(MainActivity.this, phoneNumber.getText().toString());
+                  //  }
                 }
             }
         });
@@ -142,5 +153,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void restoreOrSetFromPreferences_AllAppAndGameSettings() {
         SharedPreferences sp = getDefaultSharedPreferences(this);
+     //  isConfirmCallOn = sp.getBoolean(bKey, true);
+      //  confirmCall.setCallConfirmationEnabled(isConfirmCallOn);
     }
+
+
+
+
 }

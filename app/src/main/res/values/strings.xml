@@ -25,6 +25,7 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="display_header">Display</string>
     <string name="confirm_call_key">Confirm</string>
+    <string name="confirm_button_text">Enable Call Confirmation</string>
     <string name="about_title">About this app: </string>
     <string name="background_image">Background Image</string>
 
