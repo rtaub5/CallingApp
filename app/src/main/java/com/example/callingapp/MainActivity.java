@@ -1,6 +1,7 @@
 package com.example.callingapp;
 
 import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
+import static com.example.callingapp.ConfirmCallDialog.showCallingActivity;
 import static com.example.callingapp.ConfirmCallDialog.showInfoDialog;
 
 import android.content.Intent;
@@ -45,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText phoneNumber;
 
+    private boolean mUseDialogBox;
+    private String mKey_dialog_box;
+
 
     @Override
     protected void onStop() {
@@ -69,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
+        SharedPreferences sp = getDefaultSharedPreferences(this);
+        mUseDialogBox = sp.getBoolean(mKey_dialog_box, true);
         phoneNumber = findViewById(R.id.phoneNumber);
 
         // if we are having a list of numbers dialed
@@ -81,7 +87,12 @@ public class MainActivity extends AppCompatActivity {
            //  confirmCall.setCallConfirmationEnabled(SettingsActivity.SettingsFragment.setConfirmCallModeListener());
                 if (phoneNumber.length() == 0) {
                     Snackbar.make(view, R.string.null_phone_num_message, Snackbar.LENGTH_SHORT).show();
-                } else {
+                } else if(!mUseDialogBox) //this is for the setting for the dialog box to not use it
+                {
+                    String callStr = phoneNumber.getText().toString();
+                    showCallingActivity(MainActivity.this, callStr);
+                }
+                else {
                //    confirmCall.setPhoneNumber(phoneNumber.getText().toString());
                    // if (confirmCall.getCallConfirmationEnabled()) {
                         ConfirmCallDialog.showInfoDialog(MainActivity.this, "Do you want to call this number?", phoneNumber.getText().toString(), phoneNumber);
@@ -93,25 +104,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-        private void initializeHistoryList(Bundle savedInstanceState, String key)
-        {
-            if (savedInstanceState != null) {
-                mNumberHistory = savedInstanceState.getIntegerArrayList(key);
-            }
-            else {
-                String history = getDefaultSharedPreferences(this).getString(key, null);
-                mNumberHistory = history == null ? new ArrayList<>(): Utils.getNumberListFromJSONString(history);
-            }
+    private void initializeHistoryList(Bundle savedInstanceState, String key)
+    {
+        if (savedInstanceState != null) {
+            mNumberHistory = savedInstanceState.getIntegerArrayList(key);
         }
-
-        @Override
-        protected void onSaveInstanceState(@NonNull Bundle outState)
-        {
-            super.onSaveInstanceState(outState);
-            outState.putIntegerArrayList(mKey, mNumberHistory);
+        else {
+            String history = getDefaultSharedPreferences(this).getString(key, null);
+            mNumberHistory = history == null ? new ArrayList<>(): Utils.getNumberListFromJSONString(history);
         }
+    }
 
-   @Override
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState)
+    {
+        super.onSaveInstanceState(outState);
+        outState.putIntegerArrayList(mKey, mNumberHistory);
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -127,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-           showSettings();
+            showSettings();
             return true;
         }
         if (id == R.id.about) {

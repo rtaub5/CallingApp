@@ -25,6 +25,9 @@ import com.example.callingapp.model.lib.Utils;
 
 public class SettingsActivity extends AppCompatActivity {
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public static class SettingsFragment extends PreferenceFragmentCompat {
+        boolean mDialogBox;
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
@@ -70,16 +74,19 @@ public class SettingsActivity extends AppCompatActivity {
             setConfirmCallModeListener();
         }
 
-        private void setConfirmCallModeListener() {
+        public boolean setConfirmCallModeListener() {
             Preference confirmCallPreference = findPreference(getString(R.string.confirm_call_key));
             if (confirmCallPreference != null) {
                 confirmCallPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
                     Boolean newBooleanValue = (Boolean) newValue;
                     setConfirmCallOnOrOff(newBooleanValue);
                     return true;
+
                 }));
             }
+            return false;
         }
+
 
 
        private void setConfirmCallOnOrOff(Boolean newBooleanValue) {
@@ -93,6 +100,21 @@ public class SettingsActivity extends AppCompatActivity {
                     Boolean newBooleanValue = (Boolean) newValue;
                     setNightModeOnOrOff(newBooleanValue);
                     return true;
+                });
+            }
+        }
+
+        //for the dialog box setting
+        private void setDialogBoxListener(){
+            Preference dialogBoxPreference = findPreference(getString(R.string.dialog_box_key));
+            if( dialogBoxPreference != null)
+            {
+                dialogBoxPreference.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                    @Override
+                    public boolean onPreferenceChange(@NonNull Preference preference, Object newValue) {
+                        Boolean newBooleanValue = (Boolean) newValue;
+                        return true;
+                    }
                 });
             }
         }

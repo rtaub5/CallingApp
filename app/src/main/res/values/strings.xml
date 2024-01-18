@@ -29,5 +29,10 @@
     <string name="about_title">About this app: </string>
     <string name="background_image">Background Image</string>
 
+    <!--For the dialog box option-->
+    <string name="dialog_box_key">Open Dialog Box</string>
+    <string name="dialog_box_off">When you click the call button, no dialog box will appear, to make sure you dialed the right number, and want to place that call.</string>
+    <string name="dialog_box_on">When you click the call button, a dialog box will appear, to make sure you dialed the right number, and want to place that call.</string>
+    <string name="dialog_box_title">Conformation Before Placing Call</string>
 
 </resources>
