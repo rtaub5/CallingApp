@@ -1,12 +1,14 @@
-package com.example.callingapp;
+package com.example.callingapp.activities;
 
-import static com.example.callingapp.SettingsActivity.SettingsFragment.setNightModeOnOffFromPreferenceValue;
+import static com.example.callingapp.activities.SettingsActivity.SettingsFragment.setNightModeOnOffFromPreferenceValue;
 
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
+
+import com.example.callingapp.R;
 
 public class SplashActivity extends AppCompatActivity {
 

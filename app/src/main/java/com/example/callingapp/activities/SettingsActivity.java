@@ -1,4 +1,4 @@
-package com.example.callingapp;
+package com.example.callingapp.activities;
 
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
 import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
@@ -20,8 +19,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 
-import com.example.callingapp.model.PhoneNumber;
-import com.example.callingapp.model.lib.Utils;
+import com.example.callingapp.R;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -53,7 +51,7 @@ public class SettingsActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item)
     {
         if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
+            finish();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
@@ -66,18 +64,7 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
             setNightModePreferenceListener();
-          //  setConfirmCallModeListener();
         }
-
-        private void setConfirmCallModeListener() {
-            Preference confirmCallPreference = findPreference(getString(R.string.confirm_call_key));
-
-        }
-
-
-       private void setConfirmCallOnOrOff(Boolean newBooleanValue) {
-           System.out.println("Do nothing");
-       }
 
         private void setNightModePreferenceListener() {
             Preference nightModePreference = findPreference(getString(R.string.night_mode_key));

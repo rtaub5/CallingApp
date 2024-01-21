@@ -14,6 +14,18 @@ public class ConfirmCall {
         isCallConfirmationEnabled = true;
     }
 
+    public ConfirmCall ()
+    {
+        phoneNumber = "";
+        isCallConfirmationEnabled = true;
+    }
+
+    public ConfirmCall (String phoneNumber, boolean callConfirmationEnabled)
+    {
+        this.phoneNumber = phoneNumber;
+        this.isCallConfirmationEnabled = callConfirmationEnabled;
+    }
+
     public Boolean getCallConfirmationEnabled() {
         return isCallConfirmationEnabled;
     }

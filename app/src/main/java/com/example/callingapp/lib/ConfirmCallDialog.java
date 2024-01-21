@@ -1,16 +1,15 @@
-package com.example.callingapp;
+package com.example.callingapp.lib;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.view.View;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.callingapp.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -27,14 +26,7 @@ public class ConfirmCallDialog {
     public static void showInfoDialog (Context context, String strTitle, String strMsg, EditText phoneNumber)
     {
         // create the listener for the dialog
-        final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener ()
-        {
-            @Override
-            public void onClick (DialogInterface dialog, int which)
-            {
-                dialog.dismiss();
-            }
-        };
+        final DialogInterface.OnClickListener listener = (dialog, which) -> dialog.dismiss();
 
         // Create the AlertDialog.Builder object
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder (context);
@@ -45,19 +37,17 @@ public class ConfirmCallDialog {
         alertDialogBuilder.setIcon (R.mipmap.ic_launcher);
         alertDialogBuilder.setMessage (strMsg);
         alertDialogBuilder.setCancelable (true);
-        View view =(View) ((Activity) context).findViewById(R.id.main_activity);
-        String yes = view.getResources().getText(R.string.no_dialog).toString();
-        String no = view.getResources().getText(R.string.yes_dialog).toString();
+        String yes = context.getResources().getString(R.string.yes_dialog);
+        String no = context.getResources().getString(R.string.no_dialog);
 
-        alertDialogBuilder.setPositiveButton (yes, listener);
-        alertDialogBuilder.setNegativeButton (no, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                String callStr = phoneNumber.getText().toString();
-                showCallingActivity(context, callStr);
-
-            }
-        });
+        alertDialogBuilder.setNegativeButton(yes, (dialog, id) -> handleYesClick(phoneNumber, context));
+        alertDialogBuilder.setPositiveButton (no, listener);
         alertDialogBuilder.show();
+    }
+
+    private static void handleYesClick(EditText phoneNumber, Context context) {
+        String callStr = phoneNumber.getText().toString();
+        showCallingActivity(context, callStr);
     }
 
     public static void showCallingActivity(Context context, String callStr) {

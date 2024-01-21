@@ -1,17 +1,9 @@
-package com.example.callingapp.model.lib;
-
-import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM;
-import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
-import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
+package com.example.callingapp.lib;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.os.Build;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.preference.PreferenceManager;
 
 import com.example.callingapp.R;
 import com.google.gson.Gson;
@@ -26,14 +18,7 @@ public class Utils {
     public static void showInfoDialog (Context context, String strTitle, String strMsg)
     {
         // create the listener for the dialog
-        final DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener ()
-        {
-            @Override
-            public void onClick (DialogInterface dialog, int which)
-            {
-                dialog.dismiss();
-            }
-        };
+        final DialogInterface.OnClickListener listener = (dialog, which) -> dialog.dismiss();
 
         // Create the AlertDialog.Builder object
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder (context);
