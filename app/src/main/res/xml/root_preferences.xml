@@ -1,4 +1,5 @@
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory app:title="@string/display_header">
         <SwitchPreferenceCompat
@@ -8,6 +9,15 @@
             app:summaryOn="@string/night_mode_on"
             app:title="@string/night_mode_title" />
     </PreferenceCategory>
+
+    <!--For the option to use the dialog box -->
+    <SwitchPreferenceCompat
+        app:defaultValue="true"
+        app:key="@string/dialog_box_key"
+        app:summaryOff="@string/dialog_box_off"
+        app:summaryOn="@string/dialog_box_on"
+        app:title="@string/dialog_box_title"/>
+
     <PreferenceCategory app:title="Call Confirmation">
         <SwitchPreferenceCompat
             app:defaultValue="false"
