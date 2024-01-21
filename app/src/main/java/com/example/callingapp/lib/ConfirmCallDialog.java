@@ -56,13 +56,4 @@ public class ConfirmCallDialog {
         context.startActivity(intent);
     }
 
-    public static ArrayList<Integer> getNumberListFromJSONString (String gson){
-        Type ArrayListIntegerType = new TypeToken<ArrayList<Integer>>(){}.getType();
-        return new Gson().fromJson(gson, ArrayListIntegerType);
-    }
-
-    public static String getJSONStringFromNumberList (ArrayList<Integer> numberList){
-        return new Gson().toJson(numberList);
-    }
-
 }

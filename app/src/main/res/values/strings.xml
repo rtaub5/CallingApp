@@ -1,38 +1,47 @@
 <resources>
     <string name="app_name">Calling App</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
+    <string name="title_activity_settings">SettingsActivity</string>
 
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="cancel">No</string>
-    <string name="start">Yes</string>
-    <string name="dialog_start_game">Do you want to call this number?</string>
-    <string name="null_phone_num_message">Please enter a phone number first</string>
+    <!-- content main -->
+    <string name="phone_hint">(123)456-7890</string>
+    <string name="fab_string">Call</string>
+
+    <!-- multi_include_background -->
+    <string name="background_image">Background Image</string>
+
+    <!-- menu main -->
+    <string name="about">About</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- root preferences -->
+    <string name="display_header">Display</string>
+    <!-- night mode -->
+    <string name="night_mode_key">Night Mode</string>
+    <string name="night_mode_title">Dark/Night Mode</string>
+    <string name="night_mode_off">Never use Night/Dark Mode</string>
+    <string name="night_mode_on">Use Night/Dark Mode (unless disabled in OS Settings)</string>
+    <!-- call confirmation preference -->
+    <string name="confirmation_header">Call Confirmation</string>
+    <string name="confirm_call_key">Confirm</string>
+    <string name="call_confirmation_summary_on">Use dialog to confirm calls</string>
+    <string name="call_confirmation_summary_off">Do not confirm calls</string>
+    <string name="confirm_call_title">Confirm Calls/Do not confirm</string>
+
+
+
+    <!-- MainActivity.java -->
+    <string name="confirm_call_dialog_title">Do you want to call this number?</string>
+    <string name="null_phone_num_message">Please enter a phone number first.</string>
+    <!-- about dialog -->
+    <string name="about_title">About this app: </string>
+    <string name="about_text">Aliza Weitzberg\'s, Ilana Lesser\'s, and Rocki Taub\'s  Final Project:\nMCOO 255, Fall 2023, Calling App</string>
+
+    <!-- ConfirmCallDialog.java -->
     <string name="yes_dialog">Yes</string>
     <string name="no_dialog">No</string>
 
-    <string name="textView_text">Text to display</string>
-    <string name="phone_hint">(123)456-7890</string>
-    <string name="fab_string">Call</string>  <string name="show_history">Show History</string>
-    <string name="clear_history">Clear History</string>
-    <string name="about">About</string>
-    <string name="about_text">Aliza Weitzberg\'s, Ilana Lesser\'s, and Rocki Taub\'s  Final Project:\nMCOO 255, Fall 2023, Calling App</string>
-    <string name="night_mode_key">Night Mode</string>
-<string name="night_mode_title">Dark/Night Mode</string>
-<string name="night_mode_off">Never use Night/Dark Mode</string>
-<string name="night_mode_on">Use Night/Dark Mode (unless disabled in OS Settings)</string>
-    <string name="title_activity_settings">SettingsActivity</string>
-    <string name="display_header">Display</string>
-    <string name="confirm_call_key">Confirm</string>
-    <string name="confirm_button_text">Enable Call Confirmation</string>
-    <string name="about_title">About this app: </string>
-    <string name="background_image">Background Image</string>
 
-    <!--For the dialog box option-->
-    <string name="dialog_box_key">Open Dialog Box</string>
-    <string name="dialog_box_off">When you click the call button, no dialog box will appear, to make sure you dialed the right number, and want to place that call.</string>
-    <string name="dialog_box_on">When you click the call button, a dialog box will appear, to make sure you dialed the right number, and want to place that call.</string>
-    <string name="dialog_box_title">Conformation Before Placing Call</string>
+
+
 
 </resources>

@@ -10,21 +10,13 @@
             app:title="@string/night_mode_title" />
     </PreferenceCategory>
 
-    <!--For the option to use the dialog box -->
-   <!-- <SwitchPreferenceCompat
-        app:defaultValue="true"
-        app:key="@string/dialog_box_key"
-        app:summaryOff="@string/dialog_box_off"
-        app:summaryOn="@string/dialog_box_on"
-        app:title="@string/dialog_box_title"/> -->
-
-    <PreferenceCategory app:title="Call Confirmation">
+    <PreferenceCategory app:title="@string/confirmation_header">
         <SwitchPreferenceCompat
             app:defaultValue="false"
             app:key="@string/confirm_call_key"
-            app:summaryOn="Use dialog to confirm calls"
-            app:summaryOff="Do not confirm calls"
-            app:title="Confirm Calls/Do not confirm" />
+            app:summaryOn="@string/call_confirmation_summary_on"
+            app:summaryOff="@string/call_confirmation_summary_off"
+            app:title="@string/confirm_call_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>

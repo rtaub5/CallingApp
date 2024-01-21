@@ -9,7 +9,6 @@ import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -28,14 +27,11 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private ArrayList<Integer> mNumberHistory;
     private final String mKey = "key";
-    private final String bKey = "booleanKey";
     private ConfirmCall confirmCall;
     private boolean isConfirmCallOn;
     private String mKeyIsConfirmCallOn;
@@ -54,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = defaultSharedPreferences.edit();
         String num = phoneNumber.toString();
         editor.putString(mKey, num);
-        //   editor.putBoolean(bKey, isConfirmCallOn);
         editor.putBoolean(mKeyIsConfirmCallOn, isConfirmCallOn);
         editor.apply();
     }
@@ -64,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+       setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
 
         phoneNumber = findViewById(R.id.phoneNumber);
@@ -72,9 +67,6 @@ public class MainActivity extends AppCompatActivity {
 
         confirmCall = new ConfirmCall();
         restoreFromPreferencesConfirmCallStatus();
-
-        // if we are having a list of numbers dialed
-        //  initializeHistoryList(savedInstanceState, mKey);
 
         ExtendedFloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(view -> handleFABClick(view));
@@ -86,31 +78,14 @@ public class MainActivity extends AppCompatActivity {
         } else {
             confirmCall.setPhoneNumber(phoneNumber.getText().toString());
             isConfirmCallOn = confirmCall.getCallConfirmationEnabled();
-            //  confirmCall.setCallConfirmationEnabled(isConfirmCallOn);
             if (isConfirmCallOn) {
-                ConfirmCallDialog.showInfoDialog(MainActivity.this, "Do you want to call this number?", phoneNumber.getText().toString(), phoneNumber);
+                ConfirmCallDialog.showInfoDialog(MainActivity.this, getString(R.string.confirm_call_dialog_title), phoneNumber.getText().toString(), phoneNumber);
             } else {
                 ConfirmCallDialog.showCallingActivity(MainActivity.this, phoneNumber.getText().toString());
             }
         }
     }
 
-    /*    private void initializeHistoryList(Bundle savedInstanceState, String key)
-        {
-            if (savedInstanceState != null) {
-                mNumberHistory = savedInstanceState.getIntegerArrayList(key);
-            }
-            else {
-                String history = getDefaultSharedPreferences(this).getString(key, null);
-                mNumberHistory = history == null ? new ArrayList<>(): Utils.getNumberListFromJSONString(history);
-            }
-        } */
-
-    @Override
-    protected void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putIntegerArrayList(mKey, mNumberHistory);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,12 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             showSettings();
             return true;
@@ -142,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void showSettings() {
-        //dismissSnackBarIfShown();
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
         settingsLauncher.launch(intent);
         restoreFromPreferencesConfirmCallStatus();
@@ -155,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void restoreFromPreferencesConfirmCallStatus() {
         SharedPreferences sp = getDefaultSharedPreferences(this);
-//        mKeyIsConfirmCallOn = getString(R.string.confirm_call_key);
         isConfirmCallOn = sp.getBoolean(mKeyIsConfirmCallOn, true);
         confirmCall.setCallConfirmationEnabled(isConfirmCallOn);
     }

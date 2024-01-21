@@ -43,27 +43,5 @@ public class ConfirmCall {
     }
 
 
-    /**
-     * Reverses the game object's serialization as a String
-     * back to a ConfirmCall object
-     *
-     * @param json The serialized String of the game object
-     * @return The game object
-     */
-    public static ConfirmCall getGameFromJSON (String json)
-    {
-        Gson gson = new Gson ();
-        return gson.fromJson (json, ConfirmCall.class);
-    }
 
-    public static String getJSONFromGame (ConfirmCall obj)
-    {
-        Gson gson = new Gson ();
-        return gson.toJson (obj);
-    }
-
-    public String getJSONFromCurrentGame()
-    {
-        return getJSONFromGame(this);
-    }
 }

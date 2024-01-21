@@ -14,7 +14,7 @@
         android:layout_margin="@dimen/land_margin"
         android:layout_marginTop="@dimen/fab_margin"
         android:layout_marginRight="@dimen/fab_margin"
-        android:hint="(123)456-7890"
+        android:hint="@string/phone_hint"
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@id/fab" />
 
