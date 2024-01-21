@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 confirmCall = new ConfirmCall(phoneNumber.getText().toString());
                 isConfirmCallOn = confirmCall.getCallConfirmationEnabled();
-                confirmCall.setCallConfirmationEnabled(isConfirmCallOn);
+              //  confirmCall.setCallConfirmationEnabled(isConfirmCallOn);
                 if (phoneNumber.length() == 0) {
                     Snackbar.make(view, R.string.null_phone_num_message, Snackbar.LENGTH_SHORT).show();
                 } else {

@@ -11,12 +11,12 @@
     </PreferenceCategory>
 
     <!--For the option to use the dialog box -->
-    <SwitchPreferenceCompat
+   <!-- <SwitchPreferenceCompat
         app:defaultValue="true"
         app:key="@string/dialog_box_key"
         app:summaryOff="@string/dialog_box_off"
         app:summaryOn="@string/dialog_box_on"
-        app:title="@string/dialog_box_title"/>
+        app:title="@string/dialog_box_title"/> -->
 
     <PreferenceCategory app:title="Call Confirmation">
         <SwitchPreferenceCompat
