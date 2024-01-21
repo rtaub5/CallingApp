@@ -65,20 +65,13 @@ public class SettingsActivity extends AppCompatActivity {
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
             setPreferencesFromResource(R.xml.root_preferences, rootKey);
-
             setNightModePreferenceListener();
-            setConfirmCallModeListener();
+          //  setConfirmCallModeListener();
         }
 
         private void setConfirmCallModeListener() {
             Preference confirmCallPreference = findPreference(getString(R.string.confirm_call_key));
-            if (confirmCallPreference != null) {
-                confirmCallPreference.setOnPreferenceChangeListener(((preference, newValue) -> {
-                    Boolean newBooleanValue = (Boolean) newValue;
-                    setConfirmCallOnOrOff(newBooleanValue);
-                    return true;
-                }));
-            }
+
         }
 
 

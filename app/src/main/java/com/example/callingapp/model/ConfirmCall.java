@@ -11,7 +11,7 @@ public class ConfirmCall {
     public ConfirmCall (String p)
     {
         phoneNumber = p;
-        isCallConfirmationEnabled = false;
+        isCallConfirmationEnabled = true;
     }
 
     public Boolean getCallConfirmationEnabled() {

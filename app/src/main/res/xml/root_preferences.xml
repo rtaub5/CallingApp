@@ -10,10 +10,10 @@
     </PreferenceCategory>
     <PreferenceCategory app:title="Call Confirmation">
         <SwitchPreferenceCompat
-            app:defaultValue="true"
+            app:defaultValue="false"
             app:key="@string/confirm_call_key"
-            app:summaryOff="Use dialog to confirm calls"
-            app:summaryOn="Do not confirm calls"
+            app:summaryOn="Use dialog to confirm calls"
+            app:summaryOff="Do not confirm calls"
             app:title="Confirm Calls/Do not confirm" />
     </PreferenceCategory>
 
